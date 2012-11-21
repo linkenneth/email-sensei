@@ -1,3 +1,5 @@
+package components;
+
 import javax.script.*;
 import java.io.*;
 
@@ -12,8 +14,8 @@ public class Templator {
         engine = factory.getEngineByName("JavaScript");
         try {
             // Initializes the templating library itself
-            engine.eval(new FileReader("../../js/underscore.js"));
-            engine.eval(new FileReader("../../js/template.js"));
+            engine.eval(new FileReader("../js/underscore.js"));
+            engine.eval(new FileReader("../js/template.js"));
 
             // Initializes the template with the structure
             engine.put("structure", structure);

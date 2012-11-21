@@ -1,9 +1,14 @@
-.PHONY: default clean
+.PHONY: default clean classes run
+
+CLASSPATHS="./:components/:components/mail.jar"
 
 default: classes
 
-classes: *.java
-	javac -cp ./:./mail.jar ./*.java
+classes: components/*.java
+	javac -cp ${CLASSPATHS} components/*.java
+
+run:
+	java -cp ${CLASSPATHS} components/EmailGUI
 
 clean:
-	rm -f ./*.class
+	rm -f components/*.class
