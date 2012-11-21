@@ -1,5 +1,3 @@
-package components;
-
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -36,7 +34,7 @@ public class EmailSender {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.ssl.enable", "true");
-        props.put("mail.store.protocol", "smtp");
+        props.put("mail.store.protocol", "imaps");
         session = Session.getInstance(props, new SMTPAuthenticator());
 
     }
@@ -56,20 +54,7 @@ public class EmailSender {
 
         msg.setSubject(subject);
         msg.setContent(content, "text/plain");
-        Transport transport = session.getTransport("smtp");
-        transport.connect(HOST, PORT, USERNAME, PASSWORD);
-        transport.sendMessage(msg, msg.getAllRecipients());
-        transport.close();
-    }
-
-    public static void main (String[] args) {
-        EmailSender ems = new EmailSender();
-        ems.connect("cmat21judging@gmail.com", "calwushu21", "cmat21judging@gmail.com", "smtp.gmail.com", 465);
-        try{
-            ems.send("michaelv03@gmail.com", "test","This and that");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Transport.send(msg);
     }
 
 }

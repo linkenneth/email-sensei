@@ -170,7 +170,7 @@ public class EmailGUI extends JPanel
         emailsButton.addActionListener(this);
         buttonPanel.add(namesButton, BorderLayout.PAGE_START);
         buttonPanel.add(emailsButton, BorderLayout.CENTER);
-        buttonPanel.setPreferredSize(new Dimension(100, 20));
+        buttonPanel.setPreferredSize(new Dimension(500, 20));
         buttonPanel.setMinimumSize(new Dimension(10, 10));
         buttonPanel.add(emailLabel, BorderLayout.PAGE_END);
 
@@ -179,7 +179,7 @@ public class EmailGUI extends JPanel
         JScrollPane paneScrollPane = new JScrollPane(textPane);
         paneScrollPane.setVerticalScrollBarPolicy(
                         JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        paneScrollPane.setPreferredSize(new Dimension(500, 400));
+        paneScrollPane.setPreferredSize(new Dimension(500, 600));
         paneScrollPane.setMinimumSize(new Dimension(10, 10));
         paneScrollPane.setBorder(
                 BorderFactory.createCompoundBorder(
@@ -192,15 +192,15 @@ public class EmailGUI extends JPanel
         next.addActionListener(this);
         send = new JButton("Send");
         send.addActionListener(this);
-        JSplitPane buttonPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                                              next,
-                                              send);
-        buttonPane.setOneTouchExpandable(true);
-        buttonPane.setResizeWeight(0.5);
+        JPanel commandPanel = new JPanel();
+        commandPanel.add(next, BorderLayout.LINE_START);
+        commandPanel.add(send, BorderLayout.LINE_END);
+        commandPanel.setPreferredSize(new Dimension(500, 20));
+        commandPanel.setMinimumSize(new Dimension(10, 10));
 
         //Put the File chooser pane and the text pane in a split pane.
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-                                              buttonPanel,
+                                              commandPanel,
                                               paneScrollPane);
         splitPane.setOneTouchExpandable(true);
         splitPane.setResizeWeight(0.36);
@@ -430,3 +430,4 @@ public class EmailGUI extends JPanel
         });
     }
 }
+/** have to stack panels in right pane */

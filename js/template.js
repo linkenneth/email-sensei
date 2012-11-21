@@ -1,4 +1,4 @@
-// assume underscore is loaded
+// assume underscore and JSON is loaded
 
 function makeTemplate(structure) {
   var t = _.template(structure);
